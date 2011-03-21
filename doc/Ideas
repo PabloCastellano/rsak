@@ -1,0 +1,41 @@
+RouterModels {
+	R_CISCO_EP222
+	R_SPEEDTOUCH_123
+	R_UNKNOWN
+}
+
+--autor
+--model
+--ip
+--pass
+--port?
+
+guessRouter(): enum RouterModels
+login(user,pass): socket?
+"accion"
+
+~/.config/rsak/rsak.conf
+model = 
+user =
+pass =
+ip =
+use_https = true
+port? =
+
+Importar módulos con info de los diferentes modelos
+
+guessRouter si encuentra su modelo referencia a las funciones implementadas
+
+getClientsList() : [IP] (lista de ips)
+forwardPort(IP, port, protocol) throws NotImplemented, MaxPortsReached, InvalidProtocol, InvalidIP, InvalidPort
+
+protocolsSupported() : boolean
+
+IPv6
+Manejo de IPs (clase especial?)
+
+|--(guess)--->(login)--->(accion)--->(logout?)--x
+      |         default login
+	  |         o lee datos user/pass
+	  |
+	unknown = exit
