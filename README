@@ -1,2 +1,39 @@
+Introduction
+============
+Usually, cheap routers have just a web interface for administration. This web interface may vary depending on the firmware included by the vendor, which may also vary depending on the model. Sometimes the simple task of just forwarding a port to a local IP can become a nightmare because the web interface is not so intuitive and you have to navigate through the different menus.
 
-asd
+Router Swiss Army Knife, rsac, is a tool thought to ease the task of doing those [common] administration tasks in routers. Some of the operations are:
+* Change password
+* Change Wireless ESSID / channel / password
+* Forward ports
+* Get connected clients list
+* Get logs
+* Get status
+* Reset to factory default
+* ...
+
+rsac can also help you to automate router configurations making scripts. Currently, rsac is a command that is called with parameters but in the future it's planned to have a ncurses interface and a GTK+ interface, why not.
+
+It's programmed in Python due to its simplicity and portability and is totally modular. It lets you implement support for your model router if it's not done yet.
+
+rsac is libre software and is licensed under the GPL3+ license.
+You can get its source code from: https://github.com/PabloCastellano/rsak
+
+
+Supported models
+================
+CISCO
+* EPC3825
+
+TP-Link
+* TL-WR542G
+
+
+Status
+======
+rsak is under development. Actually it's not usable.
+
+
+Contact
+=======
+You can reach me at pablo>AT<anche.no
