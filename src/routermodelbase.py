@@ -17,21 +17,21 @@
 
 class RouterModelBase:
 
-    def login(user, passw):
-        raise NotImplemented
+    def login(self, user, passw):
+        raise NotImplementedError
 
-    def logout():
-        raise NotImplemented
+    def logout(self):
+        raise NotImplementedError
 
-    def guess():
-        raise NotImplemented
+    def guess(self,):
+        raise NotImplementedError
 
-    def getClientsList():
-        raise NotImplemented
+    def getClientsList(self):
+        raise NotImplementedError
 
-    def forwardPort():
-        raise NotImplemented
+    def forwardPort(self):
+        raise NotImplementedError
 
-    def protocolsSupported():
-        raise NotImplemented
+    def protocolsSupported(self):
+        raise NotImplementedError
 

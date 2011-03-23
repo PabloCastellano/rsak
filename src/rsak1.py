@@ -16,12 +16,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+import os
+
 PLUGINSDIR = "plugins"
 pluginfiles = os.listdir(PLUGINSDIR)
-plugins = [os.path.splitext(f)[0] for f in pluginslist]
-map(__import__, PLUGINSDIR+pluginfiles)
+plugins = [os.path.splitext(f)[0] for f in pluginfiles]
+#map(__import__, PLUGINSDIR+pluginfiles)
 
-f = getattr(backend, funcname)
-self.__setattr__(funcname, f)
+#f = getattr(backend, funcname)
+#self.__setattr__(funcname, f)
 
 #http://pytute.blogspot.com/2007/04/python-plugin-system.html

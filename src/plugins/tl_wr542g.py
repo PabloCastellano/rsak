@@ -17,3 +17,6 @@
 # Modelo
 
 # Implementa interfaces
+
+MODEL = "TP-LINK TL-WR542G"
+URL = "http://www.tp-link.com/es/products/productDetails.asp?pmodel=TL-WR542G"

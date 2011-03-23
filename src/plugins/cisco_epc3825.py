@@ -17,6 +17,19 @@
 # Modelo
 
 # Implementa interfaces
+import os
+import sys
+sys.path.append(os.path.abspath(".."))
+from routermodelbase import RouterModelBase
+
+
 class RouterModel(RouterModelBase):
-    def __init__():
-        print "loading 
+
+	MODEL = "CISCO EPC3825"
+	URL = "http://www.cisco.com/web/consumer/support/modem_DPC3825.html"
+
+	def __init__(self):
+		print "loading"
+
+if __name__ == '__main__':
+	print "main"
