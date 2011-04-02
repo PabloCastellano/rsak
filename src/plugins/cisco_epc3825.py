@@ -23,9 +23,11 @@ import os
 import sys
 sys.path.append(os.path.abspath(".."))
 from routermodelbase import RouterModelBase
+from ClientForm import ControlNotFoundError
 
 from mechanize import Browser
 import mechanize
+import re
 
 
 class RouterModel(RouterModelBase):
@@ -48,10 +50,15 @@ class RouterModel(RouterModelBase):
 	#Parece que autentica por IP, no por sesión
 	#Si ya está logeado, peta por no encontrar el campo del formulario
 	def login(self, user, passw):
-		self.br = Browser()
 		self.br.open("http://"+self.__class__.IP)
 		self.br.select_form(nr=0)
-		self.br["username_login"] = user
+
+		try:
+			self.br["username_login"] = user
+		except ControlNotFoundError:
+			print "Already logged in"
+			return True
+
 		self.br["password_login"] = passw
 		self.br.submit()
 
@@ -62,6 +69,7 @@ class RouterModel(RouterModelBase):
 		print "Login success"
 		return True
 
+	#Devuelve lista con tuplas. [(ip, mac)]
 	def getClientsList(self):
 		req = self.br.open("http://192.168.1.1/DHCPReservation.htm")
 		l = req.readlines()
@@ -71,8 +79,18 @@ class RouterModel(RouterModelBase):
 			i = i+1
 		l3 = l2[:i+1]
 
+		MACexp=re.compile('^<TD width=200 ><FONT face=Arial color=#000000 size=2>(.*?)</FONT></TD>\n')
+		IPexp=re.compile('<TD width=150 ><FONT face=Arial color=#000000 size=2>(.*?)</FONT></TD></TR>\n')
+		maclist = []
+		iplist = []
+
 		for l in l3:
-			print l
+			if MACexp.search(l) != None:
+				maclist.append(MACexp.search(l).group(1))
+			elif IPexp.search(l) != None:
+				iplist.append(IPexp.search(l).group(1))
+
+		return zip(iplist, maclist)
 
 	def logout(self):
 		self.br.open("http://192.168.1.1/logout.htm")
@@ -86,5 +104,7 @@ if __name__ == '__main__':
 	print R.guess()
 	#R.logout()
 	if R.login("admin", "xxxxx"):
-		print R.getClientsList()
+		clients = R.getClientsList()
+		for c in clients:
+			print "| %s\t| %s |" %(c[0], c[1])
 		R.logout()
