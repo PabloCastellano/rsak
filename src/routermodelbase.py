@@ -23,7 +23,7 @@ class RouterModelBase:
     def logout(self):
         raise NotImplementedError
 
-    def guess(self,):
+    def guess(self):
         raise NotImplementedError
 
     def getClientsList(self):
