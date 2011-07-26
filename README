@@ -20,6 +20,12 @@ rsac is libre software and is licensed under the GPL3+ license.
 You can get its source code from: https://github.com/PabloCastellano/rsak
 
 
+Dependencies
+===============
+python-mechanize
+python-clientform
+
+
 Supported models
 ================
 CISCO
